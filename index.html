@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My WebOS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="desktop">
+    <div id="taskbar">
+      <div id="start-button">Start</div>
+      <div id="taskbar-apps"></div>
+    </div>
+    <div id="start-menu" class="hidden">
+      <div class="app-launcher" onclick="launchApp('notepad')">📝 Notepad</div>
+      <div class="app-launcher" onclick="launchApp('terminal')">💻 Terminal</div>
+      <div class="app-launcher" onclick="launchApp('browser')">🌐 Browser</div>
+    </div>
+    <div id="window-container"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
