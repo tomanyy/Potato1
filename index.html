@@ -2,31 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My WebOS</title>
+  <title>WebOS</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="kernel.js"></script>
-  <script src="wm.js"></script>
-  <script src="storage.js"></script>
-  <script src="settings.js" defer></script>
 </head>
 <body>
-<ul id="context-menu" class="hidden">
-  <li onclick="launchApp('notepad')">New Text File</li>
-  <li onclick="launchApp('filemanager')">Open File Manager</li>
-</ul>
   <div id="desktop">
+    <!-- Windows and context menu will appear here -->
+    <div id="window-container"></div>
+
+    <!-- Taskbar -->
     <div id="taskbar">
-      <div id="start-button">Start</div>
+      <div id="start-button" onclick="toggleStartMenu()">🪟 Start</div>
       <div id="taskbar-apps"></div>
     </div>
+
+    <!-- Start Menu -->
     <div id="start-menu" class="hidden">
-      <div class="app-launcher" onclick="launchApp('notepad')">📝 Notepad</div>
-      <div class="app-launcher" onclick="launchApp('terminal')">💻 Terminal</div>
-      <div class="app-launcher" onclick="launchApp('browser')">🌐 Browser</div>
+      <ul>
+        <li onclick="launchApp('notepad')">📝 Notepad</li>
+        <li onclick="launchApp('filemanager')">📁 File Manager</li>
+        <li onclick="launchApp('settings')">⚙️ Settings</li>
+      </ul>
     </div>
-    <div id="window-container"></div>
+
+    <!-- Context Menu -->
+    <ul id="context-menu" class="hidden">
+      <li onclick="launchApp('notepad')">New Text File</li>
+      <li onclick="launchApp('filemanager')">Open File Manager</li>
+      <li onclick="launchApp('settings')">Settings</li>
+    </ul>
   </div>
+
+  <script src="kernel.js"></script>
+  <script src="wm.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
