@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Notepad</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    textarea {
+      flex: 1;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 14px;
+      border: none;
+      outline: none;
+      resize: none;
+    }
+
+    .toolbar {
+      background: #eee;
+      padding: 5px;
+      text-align: right;
+      border-bottom: 1px solid #ccc;
+    }
+
+    button {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="save()">💾 Save</button>
+    <button onclick="clearText()">🧹 Clear</button>
+  </div>
+  <textarea id="editor" placeholder="Start typing..."></textarea>
+
+  <script>
+    const editor = document.getElementById('editor');
+
+    // Load previous content from WebStorage
+    editor.value = parent.WebStorage.get('notepad-content', '');
+
+    function save() {
+      parent.WebStorage.set('notepad-content', editor.value);
+      alert('Saved!');
+    }
+
+    function clearText() {
+      if (confirm('Clear all text?')) {
+        editor.value = '';
+        save();
+      }
+    }
+  </script>
+</body>
+</html>
