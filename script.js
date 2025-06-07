@@ -1,10 +1,11 @@
-document.getElementById('start-button').onclick = () => {
-  const menu = document.getElementById('start-menu');
-  menu.classList.toggle('hidden');
-};
+document.addEventListener("contextmenu", e => {
+  e.preventDefault();
+  const menu = document.getElementById("context-menu");
+  menu.style.top = e.pageY + "px";
+  menu.style.left = e.pageX + "px";
+  menu.classList.remove("hidden");
+});
 
-function launchApp(appName) {
-  const appUrl = `apps/${appName}.html`;
-  WindowManager.launch(appName, appUrl);
-  document.getElementById('start-menu').classList.add('hidden');
-}
+document.addEventListener("click", () => {
+  document.getElementById("context-menu").classList.add("hidden");
+});
