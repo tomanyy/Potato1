@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Settings</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>System Settings</h2>
+
+  <label>
+    Theme:
+    <select id="theme-select">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+
+  <label>
+    Wallpaper:
+    <input type="text" id="wallpaper-input" placeholder="default.jpg or URL" />
+  </label>
+
+  <button onclick="saveSettings()">Save Settings</button>
+
+  <script>
+    const themeSelect = document.getElementById('theme-select');
+    const wallpaperInput = document.getElementById('wallpaper-input');
+
+    const settings = parent.WebOS.settings;
+
+    // Load current settings
+    themeSelect.value = settings.theme || 'light';
+    wallpaperInput.value = settings.wallpaper || 'default.jpg';
+
+    function saveSettings() {
+      settings.theme = themeSelect.value;
+      settings.wallpaper = wallpaperInput.value;
+
+      parent.WebOS.saveSettings();
+      alert("Settings saved. Reload the OS to apply changes.");
+    }
+  </script>
+</body>
+</html>
