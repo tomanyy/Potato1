@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>File Manager</title>
+  <style>
+    body { font-family: sans-serif; padding: 10px; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 5px; border-bottom: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <h3>File Manager</h3>
+  <ul id="file-list"></ul>
+
+  <script>
+    const files = parent.WebStorage.get("files", [
+      { name: "notes.txt", type: "text" },
+      { name: "image.png", type: "image" },
+    ]);
+
+    const list = document.getElementById("file-list");
+    files.forEach(f => {
+      const li = document.createElement("li");
+      li.textContent = f.name + " (" + f.type + ")";
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
