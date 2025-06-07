@@ -64,3 +64,21 @@ body, html {
   height: 100%;
   border: none;
 }
+
+body.light {
+  color: black;
+}
+
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark #taskbar {
+  background-color: #333;
+}
+
+body.dark .window {
+  background: #1e1e1e;
+  color: white;
+}
